@@ -8,12 +8,12 @@
     <title>Самый красивый блог</title>
 
     <!-- Website icon -->
-    <link rel="icon" type="image/png" href="icon20.png">
+    <link rel="icon" type="image/png" href="../icon20.png">
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="../icon.png">
     
     <!-- CSS includes -->
-    <link rel="stylesheet" href="dist/css/app.css">
+    <link rel="stylesheet" href="../dist/css/app.css">
 
     <!-- Meta information -->
     <meta name="author" content="">
@@ -29,6 +29,21 @@
     <meta property="og:url" content="" />
     <meta property="og:description" content="" />
     <meta property="og:locale" content="en_US">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBLdDbGts3sjPbYKE7j2Tw03iAWWABgm34",
+        authDomain: "atomlabs-b8da9.firebaseapp.com",
+        databaseURL: "https://atomlabs-b8da9.firebaseio.com",
+        projectId: "atomlabs-b8da9",
+        storageBucket: "atomlabs-b8da9.appspot.com",
+        messagingSenderId: "394511887133"
+    };
+    firebase.initializeApp(config);
+    </script>
 </head>
 <body>
 
@@ -40,7 +55,7 @@
     <div id="container" class="uk-hidden">
     
         <div id="navbar" class="uk-position-relative">
-            <img class="uk-width-1-1" src="https://source.unsplash.com/iNEXVlX-RLs/1900x900" alt="">
+            <img class="uk-width-1-1" v-bind:src="imageurl" alt="">
             <div class="uk-position-top">
                 <nav class="uk-navbar-container uk-navbar-transparent uk-light" uk-navbar>
                     <div class="uk-navbar-left">
@@ -62,19 +77,37 @@
             </div>
         </div>
 
-        <section class="uk-flex uk-flex-around uk-padding uk-background-muted">
-            <div id="about" class="uk-card uk-card-default uk-card-body uk-margin-small uk-width-2-5@m">
-                <h3 class="uk-card-title">{{ title }}</h3>
-                <p>{{ body }}</p>
+        <section class="uk-flex uk-flex-around uk-flex-wrap uk-padding uk-padding-remove-bottom uk-background-muted">
+            <div id="about" class="uk-width-1-1">
+                <div v-if="seen" class="uk-card uk-card-secondary uk-card-body uk-margin">
+                    <h3 class="uk-card-title">{{ title }}</h3>
+                    <p>{{ body }}</p>
+                </div>
             </div>
-            <div id="other" class="uk-card uk-card-default uk-card-body uk-margin-small uk-width-2-5@m">
-                <h3 class="uk-card-title">{{ title }}</h3>
-                <p>{{ body }}</p>
+            <div id="other" class="uk-width-1-1">
+                <div v-if="seen" class="uk-card uk-card-secondary uk-card-body uk-margin">
+                    <h3 class="uk-card-title">{{ title }}</h3>
+                    <p>{{ body }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="feed" uk-grid class="uk-padding uk-background-muted uk-grid-large">
+            <div v-for="post in posts" class="uk-width-1-3@m">
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                        <img v-bind:src="post.img" alt="">
+                    </div>
+                    <div class="uk-card-body">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.text }}</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <footer id="footer" class="uk-padding uk-background-secondary">
-            <a class="uk-text-bold uk-text-success" href="https://github.com/yuccienikolay/FireKittenCMS">{{ copy }}</a>
+            <a class="uk-text-bold uk-text-success" v-bind:href="copy.link">{{ copy.text }}</a>
             <p class="uk-padding-bottom uk-text-right">2018</p>
         </footer>
 
@@ -82,6 +115,6 @@
     
 
     <!-- JavaScript includes -->
-    <script src="dist/js/app.js"></script>
+    <script src="../dist/js/app.js"></script>
 </body>
 </html>
