@@ -4,7 +4,6 @@
     <!-- Basic page info -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Самый красивый блог</title>
 
     <!-- Website icon -->
@@ -49,7 +48,7 @@
                     <div class="uk-navbar-left">
                         <ul class="uk-navbar-nav">
                             <li class="uk-active"><a href="/">{{ home }}</a></li>
-                            <li><a href="#HACKIT" class="uk-text-danger" uk-toggle="target: #HACKIT">Править</a></li>
+                            <li><a href="#HACKIT" class="uk-text-danger" uk-toggle="target: #HACKIT">Админ</a></li>
                             <li><a href="#about">{{ about }}</a></li>
                             <li><a href="#other">{{ other }}</a>
                                 <div class="uk-navbar-dropdown">
@@ -69,10 +68,22 @@
             <ul uk-accordion class="uk-width-1-1">
                 <li>
                     <a class="uk-accordion-title uk-text-muted" href="#">Как пользоваться</a>
-                    <div class="uk-accordion-content">Не скажу!</div>
+                    <div class="uk-accordion-content">
+                        <h4>Правила</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, odit! Asperiores soluta sit, eaque consequuntur doloremque possimus vero dolorum vel? Non qui perspiciatis alias obcaecati rerum, hic blanditiis quo sunt?</p>
+                    </div>
                 </li>
                 <li>
-                    <a class="uk-accordion-title uk-text-muted" href="#">Глобальный конфиг</a>
+                    <a class="uk-accordion-title uk-text-muted" href="#">Отправить пост</a>
+                    <div class="uk-accordion-content">
+                        <textarea id="POimage" rows="1" class="uk-textarea uk-height-1-1 uk-width-1-1 uk-margin-small" placeholder="Адрес картинки из сети"></textarea>
+                        <textarea id="POtitle" rows="1" class="uk-textarea uk-height-1-1 uk-width-1-1 uk-margin-small" placeholder="Заголовок"></textarea>
+                        <textarea id="PObody" class="uk-textarea uk-height-1-1 uk-width-1-1 uk-margin-small" placeholder="Статья"></textarea>
+                        <button id="POok" onclick="alert('sd')" class="uk-button uk-button-default uk-margin" uk-tooltip="Будьте осторожны.">Отправить</button>
+                    </div>
+                </li>
+                <li class="uk-invisible">
+                    <a class="uk-accordion-title uk-text-muted" href="#">Глобальная конфигурация</a>
                     <div class="uk-accordion-content">
                         <textarea id="hackboard" rows=32 class="uk-textarea uk-height-1-1 uk-width-1-1"></textarea>
                         <button id="hackok" class="uk-button uk-button-default uk-margin" uk-tooltip="Будьте осторожны.">Применить</button>
